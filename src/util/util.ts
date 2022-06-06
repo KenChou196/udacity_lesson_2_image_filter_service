@@ -13,16 +13,15 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
   return new Promise(async (resolve, reject) => {
     try {
       const outpath = OUTPUT_PATH + Math.floor(Math.random() * 2000) + ".jpg";
-      Jimp.read(inputURL)
-      .then(photo => {
-        photo.resize(256, 256)
-        photo.quality(60)
-        photo.greyscale()
+      Jimp.read(inputURL).then((photo) => {
+        photo.resize(256, 256);
+        photo.quality(60);
+        photo.greyscale();
         photo.write(__dirname + outpath, () => {
           // return path to delete when progress done
           resolve(__dirname + outpath);
         });
-      })
+      });
     } catch (error) {
       reject(error);
     }
@@ -37,6 +36,5 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
 export async function deleteLocalFiles(files: Array<string>) {
   for (let file of files) {
     fs.unlinkSync(file);
-    console.log('delete file complete')
   }
 }
