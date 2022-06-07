@@ -1,3 +1,8 @@
 node_modules/
 package-lock.json
 src/tmp
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+www
